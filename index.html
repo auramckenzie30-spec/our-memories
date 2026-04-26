@@ -5,24 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Endless Love</title>
     <style>
-        /* CSS STYLING - The look and feel */
         body, html {
             margin: 0;
             padding: 0;
-            background-color: #fafafa; /* Clean off-white background */
-            font-family: 'Georgia', serif; /* Romantic, classic font */
+            background-color: #fafafa;
+            font-family: 'Georgia', serif;
             color: #333;
             scroll-behavior: smooth;
         }
 
-        /* Container that centres the content */
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        /* Main Header Page */
         .intro-header {
             height: 80vh;
             display: flex;
@@ -30,161 +27,120 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background-color: #ffebee; /* Soft pink header start */
+            background-color: #ffebee;
         }
 
         .intro-header h1 {
             font-size: 3rem;
-            color: #d81b60; /* Deep pink color */
+            color: #d81b60;
             margin-bottom: 10px;
         }
 
-        .intro-header p {
-            font-size: 1.2rem;
-            color: #ad1457;
-            font-style: italic;
-        }
-
-        /* Style for each individual memory section */
         .memory-section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 100px; /* Space between memories */
+            margin-bottom: 80px;
             background: white;
-            padding: 30px;
+            padding: 20px;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Soft shadow */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        /* The Image */
         .memory-img {
-            max-width: 100%;
+            width: 100%;
+            max-width: 500px;
             height: auto;
-            max-height: 500px; /* Prevents images from being too tall on mobile */
             border-radius: 10px;
-            margin-bottom: 25px;
-            object-fit: contain; /* Keeps image aspect ratio perfect */
+            margin-bottom: 20px;
+            display: block;
         }
 
-        /* The Story Text */
         .memory-text {
             font-size: 1.1rem;
-            line-height: 1.8;
+            line-height: 1.6;
             text-align: center;
-            max-width: 600px;
-            color: #444;
+            padding: 0 10px;
         }
 
-        /* Words of Affirmation */
         .affirmation {
             font-weight: bold;
             color: #d81b60;
-            margin-top: 20px;
+            margin-top: 15px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
-        /* The Final, Heartfelt Note Page */
         .final-note-section {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background-color: #ffebee; /* Matching pink footer start */
-            padding: 40px;
-            margin-top: 100px;
-        }
-
-        .final-header {
-            color: #d81b60;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
+            background-color: #ffebee;
+            padding: 40px 20px;
         }
 
         .final-message {
-            font-size: 1.3rem;
-            color: #333;
-            line-height: 2;
-            max-width: 650px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 600px;
             font-weight: bold;
-        }
-
-        .signature {
-            font-style: italic;
-            margin-top: 40px;
-            font-size: 1.1rem;
-            color: #ad1457;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-
         <header class="intro-header">
             <h1>A Journey of Us</h1>
-            <p>Some core memories we’ve shared, just for you.</p>
-            <p>↓ Scroll down ↓</p>
+            <p>↓ Scroll down for our memories ↓</p>
         </header>
 
         <section class="memory-section">
-            <img src="waterfall.png" alt="Memory at the waterfall" class="memory-img">
-            <div class="memory-text">
-                The first time we met after our very first huge break up. The sesh behind the waterfall was awesome though.
-            </div>
+            <img src="waterfall.png.jpeg" alt="Waterfall" class="memory-img">
+            <p class="memory-text">The first time we met after our very first huge break up. The sesh behind the waterfall was awesome though.</p>
             <div class="affirmation">You are my endless love.</div>
         </section>
 
         <section class="memory-section">
-            <img src="langata.png" alt="Bedrotting together" class="memory-img">
-            <div class="memory-text">
-                Typical bedrotting days back in Langata goofing up together best days fr.
-            </div>
+            <img src="langata.png.jpeg" alt="Langata" class="memory-img">
+            <p class="memory-text">Typical bedrotting days back in Langata goofing up together best days fr.</p>
             <div class="affirmation">You are the most incredible person I know.</div>
         </section>
 
         <section class="memory-section">
-            <img src="surprise.png" alt="The big surprise" class="memory-img">
-            <div class="memory-text">
-                This day I was nervous since the moment I left the house I remember I met mum in the morning and she told me to take it easy atleast I managed to pull the best surprise without you having a clue.
-            </div>
+            <img src="surprise.png.jpeg" alt="Surprise" class="memory-img">
+            <p class="memory-text">This day I was nervous... managed to pull the best surprise without you having a clue.</p>
             <div class="affirmation">I am so lucky to have you.</div>
         </section>
 
         <section class="memory-section">
-            <img src="umbrella.png" alt="Under the green umbrella" class="memory-img">
-            <div class="memory-text">
-                Effects of microgynon you were mad at me coz the umbrella wasn't helping you.
-            </div>
-            <div class="affirmation">I will always choose you, endlessly.</div>
+            <img src="umbrella.png.jpeg" alt="Umbrella" class="memory-img">
+            <p class="memory-text">Effects of microgynon you were mad at me coz the umbrella wasn't helping you.</p>
+            <div class="affirmation">I will always choose you.</div>
         </section>
 
         <section class="memory-section">
-            <img src="friends.png" alt="Meeting friends" class="memory-img">
-            <div class="memory-text">
-                First time meeting your friends.
-            </div>
+            <img src="friends.png.jpeg" alt="Friends" class="memory-img">
+            <p class="memory-text">First time meeting your friends.</p>
             <div class="affirmation">You are my greatest adventure.</div>
         </section>
 
         <section class="memory-section">
-            <img src="favorite.png" alt="A close-up selfie" class="memory-img">
-            <div class="memory-text">
-                Still one of my favorite photo of us I'm in love with your eyes
-            </div>
+            <img src="favorite.png.jpeg" alt="Favorite" class="memory-img">
+            <p class="memory-text">Still one of my favorite photo of us I'm in love with your eyes.</p>
             <div class="affirmation">I love you, forever.</div>
         </section>
+    </div>
 
-    </div> <section class="final-note-section">
-        <h1 class="final-header">To My Love</h1>
+    <section class="final-note-section">
+        <h1 style="color: #d81b60;">To My Love</h1>
         <p class="final-message">
             Although we are far from each other right now, my love for you will always be stronger despite all the disagreements, fights, issues and misunderstanding that we have my love for her will always grow stronger and I miss her each so so much.
         </p>
-        <p class="signature">You are my whole heart.</p>
+        <p style="font-style: italic; margin-top: 20px;">Forever yours, <br> McKenzie Aura</p>
     </section>
 
 </body>
