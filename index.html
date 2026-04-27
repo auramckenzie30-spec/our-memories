@@ -5,143 +5,220 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Endless Love</title>
     <style>
+        :root {
+            --primary-pink: #ff85a1;
+            --deep-rose: #d81b60;
+        }
+
         body, html {
             margin: 0;
             padding: 0;
-            background-color: #fafafa;
+            height: 100%;
+            overflow: hidden; /* Prevent scrolling */
+            background: linear-gradient(135deg, #fce4ec 0%, #ffebee 100%);
             font-family: 'Georgia', serif;
-            color: #333;
-            scroll-behavior: smooth;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+        /* Music control hidden but active */
+        #bg-music { display: none; }
+
+        /* Floating Emojis Animation */
+        .emoji-particle {
+            position: absolute;
+            bottom: -50px;
+            font-size: 20px;
+            animation: floatUp 5s linear forwards;
+            z-index: 100;
+            user-select: none;
+            pointer-events: none;
         }
 
-        .intro-header {
-            height: 80vh;
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Card System */
+        .card-container {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            background-color: #ffebee;
         }
 
-        .intro-header h1 {
-            font-size: 3rem;
-            color: #d81b60;
-            margin-bottom: 10px;
-        }
-
-        .memory-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 80px;
-            background: white;
+        .memory-card {
+            position: absolute;
+            width: 85%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px); /* Glass effect */
+            border-radius: 20px;
             padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.8) translateY(50px);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+        }
+
+        .memory-card.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: all;
+            z-index: 10;
         }
 
         .memory-img {
             width: 100%;
-            max-width: 500px;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            display: block;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .memory-text {
             font-size: 1.1rem;
-            line-height: 1.6;
-            text-align: center;
-            padding: 0 10px;
+            line-height: 1.5;
+            color: #444;
+            margin-bottom: 15px;
         }
 
         .affirmation {
             font-weight: bold;
-            color: #d81b60;
-            margin-top: 15px;
+            color: var(--deep-rose);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            font-size: 0.85rem;
         }
 
-        .final-note-section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        .tap-instruction {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
             text-align: center;
-            background-color: #ffebee;
-            padding: 40px 20px;
+            color: var(--deep-rose);
+            font-weight: bold;
+            opacity: 0.6;
+            animation: pulse 1.5s infinite;
         }
 
-        .final-message {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            max-width: 600px;
-            font-weight: bold;
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
         }
     </style>
 </head>
-<body>
+<body onclick="nextCard()">
 
-    <div class="container">
-        <header class="intro-header">
-            <h1>A Journey of Us</h1>
-            <p>↓ Scroll down for our memories ↓</p>
-        </header>
+    <audio id="bg-music" loop>
+        <source src="our-song.mp3" type="audio/mpeg">
+    </audio>
 
-        <section class="memory-section">
-            <img src="waterfall.png.jpeg" alt="Waterfall" class="memory-img">
+    <div class="card-container" id="container">
+        
+        <div class="memory-card active" id="card0">
+            <h1 style="color: var(--deep-rose);">Hi Love...</h1>
+            <p>I built this for you. Tap anywhere to walk through our memories.</p>
+            <p style="font-size: 3rem;">🎁</p>
+        </div>
+
+        <div class="memory-card" id="card1">
+            <img src="waterfall.png.jpeg" class="memory-img">
             <p class="memory-text">The first time we met after our very first huge break up. The sesh behind the waterfall was awesome though.</p>
             <div class="affirmation">You are my endless love.</div>
-        </section>
+        </div>
 
-        <section class="memory-section">
-            <img src="langata.png.jpeg" alt="Langata" class="memory-img">
+        <div class="memory-card" id="card2">
+            <img src="langata.png.jpeg" class="memory-img">
             <p class="memory-text">Typical bedrotting days back in Langata goofing up together best days fr.</p>
             <div class="affirmation">You are the most incredible person I know.</div>
-        </section>
+        </div>
 
-        <section class="memory-section">
-            <img src="surprise.png.jpeg" alt="Surprise" class="memory-img">
-            <p class="memory-text">This day I was nervous... managed to pull the best surprise without you having a clue.</p>
+        <div class="memory-card" id="card3">
+            <img src="surprise.png.jpeg" class="memory-img">
+            <p class="memory-text">I was so nervous this day... pull the best surprise without you having a clue.</p>
             <div class="affirmation">I am so lucky to have you.</div>
-        </section>
+        </div>
 
-        <section class="memory-section">
-            <img src="umbrella.png.jpeg" alt="Umbrella" class="memory-img">
-            <p class="memory-text">Effects of microgynon you were mad at me coz the umbrella wasn't helping you.</p>
+        <div class="memory-card" id="card4">
+            <img src="umbrella.png.jpeg" class="memory-img">
+            <p class="memory-text">You were mad at me coz the umbrella wasn't helping you. Cutest anger ever.</p>
             <div class="affirmation">I will always choose you.</div>
-        </section>
+        </div>
 
-        <section class="memory-section">
-            <img src="friends.png.jpeg" alt="Friends" class="memory-img">
-            <p class="memory-text">First time meeting your friends.</p>
+        <div class="memory-card" id="card5">
+            <img src="friends.png.jpeg" class="memory-img">
+            <p class="memory-text">First time meeting your friends. A big step in us.</p>
             <div class="affirmation">You are my greatest adventure.</div>
-        </section>
+        </div>
 
-        <section class="memory-section">
-            <img src="favorite.png.jpeg" alt="Favorite" class="memory-img">
-            <p class="memory-text">Still one of my favorite photo of us I'm in love with your eyes.</p>
+        <div class="memory-card" id="card6">
+            <img src="favorite.png.jpeg" class="memory-img">
+            <p class="memory-text">Still one of my favorite photos. I'm in love with your eyes.</p>
             <div class="affirmation">I love you, forever.</div>
-        </section>
+        </div>
+
+        <div class="memory-card" id="card7">
+            <h2 style="color: var(--deep-rose);">My Final Note</h2>
+            <p class="memory-text" style="font-weight: bold; font-size: 1rem;">
+                Although we are far from each other right now, my love for you will always be stronger despite all the disagreements, fights, issues and misunderstanding that we have my love for her will always grow stronger and I miss her each so so much.
+            </p>
+            <p style="font-style: italic;">Forever yours, <br> McKenzie Aura</p>
+        </div>
+
     </div>
 
-    <section class="final-note-section">
-        <h1 style="color: #d81b60;">To My Love</h1>
-        <p class="final-message">
-            Although we are far from each other right now, my love for you will always be stronger despite all the disagreements, fights, issues and misunderstanding that we have my love for you will always grow stronger and I miss her each so so much.
-        </p>
-        <p style="font-style: italic; margin-top: 20px;">Forever yours, <br> McKenzie Aura</p>
-    </section>
+    <div class="tap-instruction">Tap to continue ✨</div>
 
+    <script>
+        let currentCard = 0;
+        const totalCards = 8;
+        const music = document.getElementById('bg-music');
+
+        function nextCard() {
+            // Play music on first tap
+            if(currentCard === 0) {
+                music.play().catch(e => console.log("Music waiting for interaction"));
+            }
+
+            if (currentCard < totalCards - 1) {
+                document.getElementById(`card${currentCard}`).classList.remove('active');
+                currentCard++;
+                document.getElementById(`card${currentCard}`).classList.add('active');
+                createHeart();
+            }
+        }
+
+        // Floating Emoji Logic
+        function createHeart() {
+            const emojis = ['❤️', '💖', '✨', '🌸', '🥰', '💕'];
+            for(let i=0; i<15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'emoji-particle';
+                    heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 5000);
+                }, i * 100);
+            }
+        }
+
+        // Periodically spawn a few emojis even without tapping
+        setInterval(() => {
+            if(currentCard > 0) {
+                const heart = document.createElement('div');
+                heart.className = 'emoji-particle';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
